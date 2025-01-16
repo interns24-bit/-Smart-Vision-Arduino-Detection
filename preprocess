@@ -1,0 +1,30 @@
+import os
+import cv2
+import numpy as np
+ 
+def load_data(folder_path, label):
+    data = []
+    labels = []
+    for filename in os.listdir(folder_path):
+        filepath = os.path.join(folder_path, filename)
+        image = cv2.imread(filepath)
+        if image is not None:
+            # Resize to 64x64 and flatten the image
+            data.append(cv2.resize(image, (64, 64)).flatten())
+            labels.append(label)
+    return data, labels
+ 
+# Load uno images
+uno_data, uno_labels = load_data("/home/pi/Dataset/uno", 0) #replace with your directory path
+ 
+# Load maker images
+maker_data, maker_labels = load_data("/home/pi/Dataset/maker", 1) #replace with your directory path
+  
+# Combine the data
+data = np.array(uno_data + maker_data)
+labels = np.array(uno_labels + maker_labels)
+ 
+# Save data for reuse
+np.save("data.npy", data)
+np.save("labels.npy", labels)
+print("Dataset prepared and saved.")
