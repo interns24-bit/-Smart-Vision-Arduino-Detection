@@ -22,4 +22,4 @@ print(f"Model Accuracy: {accuracy * 100:.2f}%")
 with open("arduino_board_model.pkl", "wb") as f:
     pickle.dump(model, f)
 
-print("Model trained and saved as arduino_model.pkl.")
+print("Model trained and saved as board_model.pkl.")
