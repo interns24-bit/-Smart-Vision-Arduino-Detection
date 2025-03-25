@@ -98,15 +98,15 @@ while True:
 
         # Count purple objects passing through the ROI
         if not object_in_roi:
-            count_arduino_maker += 1
+            count_maker_uno += 1
             object_in_roi = True  # Mark object as counted
 
     # Check if an object is present and centered in the ROI for blue
     elif is_object_present_and_centered(roi_frame, lower_blue, upper_blue):
         # Preprocess the ROI frame for classification
         processed = preprocess_image(roi_frame)
-
- # Perform the prediction
+        
+        # Perform the prediction
         prediction = model.predict([processed])[0]
         confidence = model.predict_proba([processed])[0]  # Get confidence scores
 
@@ -122,7 +122,7 @@ while True:
         if not object_in_roi:
             count_arduino_uno += 1
             object_in_roi = True  # Mark object as counted
-
+            
     else:
         # Reset flag if no object detected or not centered
         object_in_roi = False
@@ -139,5 +139,5 @@ while True:
         break
 
 cv2.destroyAllWindows()
-picam2.stop()
+picam2.stop()  
 
