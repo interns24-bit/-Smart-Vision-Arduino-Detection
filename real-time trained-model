@@ -59,7 +59,7 @@ lower_blue = np.array([100, 50, 50])  # Lower bound for blue
 upper_blue = np.array([125, 255, 255])  # Upper bound for blue
 
 # Initialize counters for each category
-count_arduino_maker = 0
+count_maker_uno = 0
 count_arduino_uno = 0
 
 # Flag to ensure an object is counted only once
@@ -90,7 +90,7 @@ while True:
 
         # Assign color and label for Arduino Maker (purple)
         color = (255, 0, 255)  # Purple color for bounding box
-        label = "Arduino Maker"
+        label = "Maker Uno"
 
         # Draw bounding box and label
         cv2.rectangle(frame, (x1, y1), (x2, y2), color, 2)
@@ -128,7 +128,7 @@ while True:
         object_in_roi = False
 
     # Display counters on the frame
-    cv2.putText(frame, f"Arduino Maker: {count_arduino_maker}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 255), 2)
+    cv2.putText(frame, f"Maker Uno: {count_maker_uno}", (10, 50), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 255), 2)
     cv2.putText(frame, f"Arduino Uno: {count_arduino_uno}", (10, 80), cv2.FONT_HERSHEY_SIMPLEX, 0.6, (255, 0, 0), 2)
 
     # Display the live feed with predictions and counters
